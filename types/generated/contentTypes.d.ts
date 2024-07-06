@@ -831,6 +831,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     Name: Attribute.String;
     Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    doctor: Attribute.Relation<
+      'api::category.category',
+      'manyToOne',
+      'api::doctor.doctor'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -855,6 +860,7 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
     singularName: 'doctor';
     pluralName: 'doctors';
     displayName: 'Doctor';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -864,6 +870,16 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
     Address: Attribute.String;
     Patient: Attribute.String;
     Experience: Attribute.String;
+    StartTime: Attribute.Time;
+    EndTime: Attribute.Time;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    About: Attribute.RichText;
+    Vip: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::doctor.doctor',
+      'oneToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
