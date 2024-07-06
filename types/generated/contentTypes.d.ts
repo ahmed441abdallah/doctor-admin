@@ -831,9 +831,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     Name: Attribute.String;
     Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    doctor: Attribute.Relation<
+    doctors: Attribute.Relation<
       'api::category.category',
-      'manyToOne',
+      'manyToMany',
       'api::doctor.doctor'
     >;
     createdAt: Attribute.DateTime;
@@ -877,7 +877,7 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
     Vip: Attribute.Boolean;
     categories: Attribute.Relation<
       'api::doctor.doctor',
-      'oneToMany',
+      'manyToMany',
       'api::category.category'
     >;
     createdAt: Attribute.DateTime;

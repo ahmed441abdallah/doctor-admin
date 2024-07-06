@@ -24,9 +24,9 @@
       "type": "media",
       "multiple": false
     },
-    "doctor": {
+    "doctors": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::doctor.doctor",
       "inversedBy": "categories"
     }
