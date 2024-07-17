@@ -794,12 +794,27 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
     singularName: 'appointment';
     pluralName: 'appointments';
     displayName: 'Appointment ';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
+    UserName: Attribute.String;
+    Email: Attribute.Email;
+    Date: Attribute.String;
+    Time: Attribute.String;
+    Note: Attribute.Blocks;
+    doctor: Attribute.Relation<
+      'api::appointment.appointment',
+      'manyToOne',
+      'api::doctor.doctor'
+    >;
+    hospitals: Attribute.Relation<
+      'api::appointment.appointment',
+      'oneToMany',
+      'api::hospital.hospital'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,6 +895,11 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    appointments: Attribute.Relation<
+      'api::doctor.doctor',
+      'oneToMany',
+      'api::appointment.appointment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -910,6 +930,11 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
+    appointment: Attribute.Relation<
+      'api::hospital.hospital',
+      'manyToOne',
+      'api::appointment.appointment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
