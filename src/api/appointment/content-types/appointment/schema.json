@@ -24,9 +24,6 @@
     "Time": {
       "type": "string"
     },
-    "Note": {
-      "type": "blocks"
-    },
     "doctor": {
       "type": "relation",
       "relation": "manyToOne",
@@ -38,6 +35,9 @@
       "relation": "oneToMany",
       "target": "api::hospital.hospital",
       "mappedBy": "appointment"
+    },
+    "Note": {
+      "type": "text"
     }
   }
 }

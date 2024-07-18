@@ -804,7 +804,6 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
     Email: Attribute.Email;
     Date: Attribute.String;
     Time: Attribute.String;
-    Note: Attribute.Blocks;
     doctor: Attribute.Relation<
       'api::appointment.appointment',
       'manyToOne',
@@ -815,6 +814,7 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
       'oneToMany',
       'api::hospital.hospital'
     >;
+    Note: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
